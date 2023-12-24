@@ -1,0 +1,35 @@
+<!-- <nav>
+    <a href="#" class="brand" style=" z-index: 99999;"><img src="../../../assets/images/Good-food-logo-design-on-transparent-background-PNG.png" alt=""></a>
+    <form>
+        <input type="search" placeholder="search Recipe">
+        <button class="btn-search" type="submit">Search</button>
+    </form>
+    <ul class="nav-list">
+        <li class="nav-item" *ngIf="isLoggedIn == true"><a href="#" class="nav-link" style="text-transform: capitalize;">{{currentUser   }}</a></li>
+        <li class="nav-item" *ngIf="isLoggedIn == true"><a (click)="logout()" href="#" class="nav-link">Logout </a></li>
+        <li class="nav-item" *ngIf="isLoggedIn == false"><a (click)="login()" href="#" class="nav-link">Login </a></li>
+    </ul>
+</nav> -->
+
+<nav class="topnav navbar navbar-expand-lg navbar-dark bg-dark px-3 py-0 justify-content-between "
+            style="background-color: var(--navBg) !important;">
+            <div class="nav-left d-flex">
+                <button type="button" class="btn" (click)="toggle()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand d-flex py-0 align-items-center " routerLink="popular">
+                    <img src="../../../assets/images/Good-food-logo-design-on-transparent-background-PNG.png" alt=""
+                        width="50" height="50" class="d-inline-block align-text-top">
+                    <h6 class="text-light mt-3 ms-3">{{headerService.getCurrentPageName()}}</h6>
+                </a>
+            </div>
+            <div class="d-flex">
+                <ul class="nav-list list-unstyled d-flex align-items-center mb-0">
+                    <li class="nav-item"><p class="nav-link"  *ngIf="isLoggedIn == true"
+                            style="text-transform: capitalize;">{{currentUser}}</p></li>
+                    <li class="nav-item"  *ngIf="isLoggedIn == true"><a  class="nav-link" (click)="logout()"  class="nav-link">Logout </a></li>
+                    <li class="nav-item"  *ngIf="isLoggedIn == false"><a class="nav-link"  (click)="login()" class="nav-link">Login </a></li>
+                </ul>
+            </div>
+
+        </nav>

@@ -1,0 +1,21 @@
+.recipe-card {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recipe-card .card-img-top {
+    height: 60%;
+    object-fit: cover;
+}
+
+.recipe-card .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-card .badge {
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+}

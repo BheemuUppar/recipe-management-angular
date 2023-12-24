@@ -1,0 +1,46 @@
+
+.navbar .btn:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+input[type="search"] {
+    height: 30px !important;
+    color: var(--textColor) !important;
+}
+
+input[type="search"]::placeholder {
+    color: var(--textColor);
+}
+mat-drawer{
+    background-color: var(--navBg);
+    color: var(--textColor);
+}
+.side-menu-list{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0px 34px;
+    margin-top: 45px;
+
+}
+
+
+.nav-link:hover{
+    color: aqua !important;
+}
+
+.content{
+    background-color: var(--bgColor);
+    padding-top:15px;
+    flex-grow: 1;
+}
+.example-top-content{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+

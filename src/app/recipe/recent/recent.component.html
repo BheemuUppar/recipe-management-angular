@@ -1,0 +1,20 @@
+<!-- <div class="container">
+    <div class="card" *ngFor="let recipe of recentViews">
+        <img src="{{recipe.thumbnail}}" alt="">
+        <span class="" style="display:flex; align-items: end;">
+            <h4 class="title">{{recipe.title}}</h4>
+            <div class="isVeg"><div></div></div>
+        </span>
+        <strong class="time"> {{recipe.time}} Mins</strong>
+        <button class="read-more">Read More</button>
+    </div>
+</div> -->
+
+<div class=" m-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col-md-3 col-sm-6 col-lg-3" *ngFor="let recipe of recentViews">
+            <app-recipe-card [recipe]="recipe"></app-recipe-card>
+        </div>
+
+    </div>
+</div>

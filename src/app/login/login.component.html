@@ -1,0 +1,34 @@
+<div class="container ">
+
+    <form [formGroup]="loginForm" #form (ngSubmit)="login()">
+        <h2>Login</h2>
+        <div class="input-container">
+            <img class="icon" src="../../assets/icons/email.svg" alt="">
+            <input formControlName="email" class="input-field" type="email" placeholder="Email" name="email">
+        </div>
+        <div class="error" *ngIf="loginForm.get('email')?.invalid ">
+              <p *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')" class="text-danger">email required</p>
+              <p *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email') " class="text-danger">email not valid</p>
+        </div>
+
+
+        <div class="input-container">
+            <img class="icon" src="../../assets/icons/key.svg" alt="">
+            <input formControlName="password" class="input-field" type="password" placeholder="Password" name="psw">
+        </div>
+        <div class="error" *ngIf="loginForm.get('password')?.invalid ">
+            <p *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')" class="text-danger">Password required</p>
+      </div>
+
+      <p *ngIf="onLoginMessage">{{onLoginMessage}}</p>
+        <button [disabled]="loginForm.invalid" [ngStyle]="{'cursor': loginForm.invalid ? 'not-allowed' : 'pointer' } " type="submit" class="btn ">login
+        </button>
+
+        <p>don't have account? click here to <a routerLink="/register">Register</a>
+        </p>
+        <a routerLink="/home">skip now</a>
+
+    </form>
+
+</div>
+

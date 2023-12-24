@@ -1,0 +1,100 @@
+<!-- <div class="container">
+    <h2>Add New Recipe</h2>
+    <form [formGroup]="recipeForm" (ngSubmit)="addRecipe()">
+        <div class="input-container">
+            <input type="text" formControlName="title" name="recipeName" id="recipeName" placeholder="Enter Recipe Name">
+        </div>
+        <div class="input-container">
+            <input type="url" formControlName="thumbnail" name="thumbnail" id="thumbnail" placeholder="Paste Recipe Thumbnail URL">
+        </div>
+
+        <div class="input-container">
+            <select formControlName="isVeg" name="isVeg" id="">
+                <option value="">Select Recipe Type</option>
+                <option value="vegetarian">vegetarian</option>
+                <option value="non-vegetarian">Non-vegetarian</option>
+            </select>
+        </div>
+
+        <div class="input-container">
+            <input type="text" placeholder="Time Required to Prepare">
+        </div>
+        <div class="" formArrayName="ingredients">
+            <div class="mt-2" *ngFor="let ing of ingredients.controls; let i = index">
+                <div class="ingredient" [formGroupName]="i">
+                    <input type="text" formControlName="quantity" name="quantity" placeholder="Quantity">
+                    <input type="text" formControlName="name" name="name" placeholder="Ingredient name">
+                </div>
+            </div>
+            <button (click)="creatIngredientField()">Add Ingredient</button>
+        </div>
+
+        <div class="" formArrayName="instructions">
+            <div class="mt-2" *ngFor="let instruction of instructions.controls; let i = index">
+                <div class="instruction" [formGroupName]="i">
+                    <input type="text" formControlName="description" name="step" placeholder="{{'Enter Step No:'+(i+1)}}">
+                </div>
+            </div>
+            <button (click)="addStep()">Add Ingredient</button>
+            <button type="submit">Add Recipe</button>
+        </div>
+    </form>
+</div> -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2 class="text-center mb-5">Add New Recipe</h2>
+            <form [formGroup]="recipeForm">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="recipeName" formControlName="title" placeholder="Enter Recipe Name">
+                    <label for="recipeName">Recipe Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="url" class="form-control" id="thumbnail" formControlName="thumbnail" placeholder="Paste Recipe Thumbnail URL">
+                    <label for="thumbnail">Thumbnail URL</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="recipeType" formControlName="isVeg">
+              <option value="">Select Recipe Type</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="non-vegetarian">Non-vegetarian</option>
+            </select>
+                    <label for="recipeType">Recipe Type</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input formControlName="time" type="text" class="form-control" id="timeRequired" placeholder="Time Required to Prepare">
+                    <label for="timeRequired">Time Required</label>
+                </div>
+                <div class="mb-3">
+                    <h5 class="mb-3">Ingredients:</h5>
+                    <div formArrayName="ingredients">
+                        <div class="d-flex align-items-center mb-2" *ngFor="let ing of ingredients.controls; let i = index" [formGroupName]="i">
+                            <input type="text" class="form-control me-2" formControlName="quantity" placeholder="Quantity">
+                            <input type="text" class="form-control me-2" formControlName="name" placeholder="Ingredient name">
+                            <button type="button" class="btn btn-danger" (click)="removeIngredientField(i)">
+                  <i class="bi bi-trash"></i>
+                </button>
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="creatIngredientField()">Add Ingredient</button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h5 class="mb-3">Instructions:</h5>
+                    <div formArrayName="instructions">
+                        <div class="d-flex align-items-center mb-2" *ngFor="let instruction of instructions.controls; let i = index" [formGroupName]="i">
+                            <span class="me-2 text-nowrap">Step {{ i + 1 }}:</span>
+                            <input type="text" class="form-control" formControlName="description" placeholder="Enter step description">
+                            <button type="button" class="btn btn-danger ms-2" (click)="removeInstructionField(i)">
+                  <i class="bi bi-trash"></i>
+                </button>
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="addStep()">Add Step</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success" (click)="addRecipe()">Add Recipe</button>
+            </form>
+        </div>
+    </div>
+</div>
