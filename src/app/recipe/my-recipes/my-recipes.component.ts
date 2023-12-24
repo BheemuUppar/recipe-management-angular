@@ -33,54 +33,12 @@ export class MyRecipesComponent implements OnInit {
   }
   getMyRecipes(email: any) {
     this.recipeService.getMyRecipes(email).subscribe((data: any) => {
-      // console.log(data)
-      // for(let key in data){
-
-      // let   id  =  data[key].id;
-      // let   title  =  data[key].title;
-      // let isVeg = (data[key].isVeg == 'vegetarien')?true:false;
-      // let time = data[key].time;
-      // let thumbnail = data[key].thumbnail;
-      // //  for(data[key].i)
-      // let ingredients : any = [];
-
-      // for(let ing in data[key].ingredients){
-      //   const quantity = data[key].ingredients[ing].quantity;
-      //   const name = data[key].ingredients[ing].name;
-      //   ingredients.push(quantity+' '+name)
-      //         console.log(data[key].ingredients[ing])
-      // }
-      // let instructions :any =[] ;
-
-      // for(let stepkey in data[key].instructions){
-      //   const description = data[key].instructions[stepkey].description;
-      //   instructions.push(description)
-      // }
-      // console.log('Ingredients : ',new Recipe(id, title, ingredients, instructions,thumbnail, isVeg, time))
-      // let obj = new Recipe(id, title, ingredients, instructions,thumbnail, isVeg, time)
-      //   this.myRecipes.push(obj)
-      // }
+     
       this.myRecipes = data.data;
     });
   }
 
-  // displayRecipe(recipe : Recipe){
-  //   // this.recipeService.setCurrentRecipe(recipe);
 
-  //   localStorage.setItem('currentRecipe' , JSON.stringify(recipe));
-  //   this.userService. getUsers().subscribe((data:any)=>{
-  //     for(let key in data){
-  //       if(data[key].id == this.currentUser.id){
-  //         this.recipeService.addToRecentViews(data[key] , recipe).subscribe((res)=>{
-  //           console.log("Recent : ", res);
-  //         }, (err)=>{
-  //           console.log("Recent Error : ", err);
-  //         })
-  //       }
-  //     }
-  //   });
-  //   this.router.navigateByUrl('home/display')
-  // }
 
   displayRecipe(recipe: any) {
     localStorage.setItem('currentRecipe', JSON.stringify(recipe));

@@ -21,11 +21,18 @@
   padding: 0px 34px;
   margin-top: 45px;
 }
+.nav{
+    padding-right: 5px;
+}
+.nav-link , nav, .navbar-brand p {
+    color: var(--textColor);
+    
+}
 
 .nav-link:hover {
   color: aqua !important;
 }
 
-.selectedPage {
+.selectedPage a{
   color: aqua !important;
 }

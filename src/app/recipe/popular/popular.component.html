@@ -1,19 +1,4 @@
-<!-- <div class="container">
-    <div class="card" *ngFor="let recipe of recipes">
-        <img src="{{recipe.thumbnail}}" alt="">
-        <span class="" style="display:flex; align-items: end;">
-            <h4 class="title">{{recipe.title}}</h4>
-            <div class="isVeg"><div></div></div>
-        </span>
-        <strong class="time"> {{recipe.time}} Mins</strong>
-        <button class="read-more" (click)="displayRecipe(recipe)">Read More</button>
-    </div>
-</div> -->
 
-
-<!--  -->
-
-<!--  -->
 <div class="container  d-flex ">
     <form class="d-flex " style="flex-grow: 1;">
         <input  class="form-control me-2" type="search" name="searchText" id="" placeholder="search Recipes" [(ngModel)]="searchText">
@@ -26,6 +11,7 @@
         <div class="col-md-3 col-sm-6 col-lg-3" *ngFor="let recipe of recipes">
             <app-recipe-card [recipe]="recipe"></app-recipe-card>
         </div>
+        <div *ngIf="recipes.length  ==  0"> No Recipes Found</div>
     </div>
     <div class="d-flex justify-content-center align-items-center py-2" *ngIf="searchMode == false">
         <button class="btn btn-primary" (click)="getRandomRecipes()">Load More</button>

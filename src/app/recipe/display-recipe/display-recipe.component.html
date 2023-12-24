@@ -1,65 +1,36 @@
-<!-- <h2 class="title">
-    {{recipe.title}}
-</h2>
-
-<div class="" style="width:100%;">
-
-    <button (click)="addToFavorite()" style="float:right; margin-right: 1rem; padding: 5px;">Add to Favorite</button>
-</div>
-
-<div class="container"> -->
-
-<!-- <div class="ingredients">
-        <h3 class="ingredients"></h3>
-        <ul *ngFor="let ing of recipe.ingredients">
-            <li>{{ing}}</li>
-        </ul>
-    </div>
-
-
-    <div class="instructions">
-        <img src="{{recipe.thumbnail}}" alt="Image Not Found" class="thumbnail">
-        <div>
-            <span>
-                <h4>Cooking Time: {{recipe.time}} Mins</h4>
-            </span>
-            <h3>Instructions</h3>
-            <ul *ngFor="let step of recipe.instructions">
-                <li>{{step}}</li>
-            </ul>
+<div class="container-fluid recipe-details">
+    <div *ngIf="recipe" class="d-flex justify-content-between px-2">
+        <h2 class="recipe-title">{{recipe?.title}}</h2>
+        <div class="recipe-meta">
+            <span class="recipe-meta-item"><i class="bi-clock"></i> Cooking Time: {{recipe.time}} minutes</span>
+            <!-- <span class="recipe-meta-item"><i class="bi-people"></i> Serves: 4</span> -->
+            <span class="recipe-meta-item"><i [class]="!isFavorite ? 'bi-star':'bi bi-star-fill text-warning'"></i>
+                <button [disabled]="isLoggedIn == false" class="btn btn-primary"
+                    (click)="!isFavorite ? addToFavorite():removeFromFavorites()">{{!isFavorite?'Add to
+                    favorites':'Remove from favorite'}}</button></span>
         </div>
     </div>
-</div> -->
-
-<div class="container-fluid recipe-details">
-    <div class="row">
+    <div class="row" *ngIf="recipe">
         <div class="col-md-6 recipe-thumbnail" style="height:inherit !important">
-            <img class="h-100 w-100" src="{{recipe.thumbnail}}" alt="Recipe Thumbnail">
+            <img class="h-100 w-100" src="{{recipe?.thumbnail}}" alt="Recipe Thumbnail">
         </div>
         <div class="col-md-6 recipe-info">
-            <h2 class="recipe-title">{{recipe.title}}</h2>
-            <div class="recipe-meta">
-                <span class="recipe-meta-item"><i class="bi-clock"></i> Cooking Time: 30 minutes</span>
-                <!-- <span class="recipe-meta-item"><i class="bi-people"></i> Serves: 4</span> -->
-                <span class="recipe-meta-item"><i class="bi-star"></i> <button class="btn btn-primary"
-                        (click)="addToFavorite()">Add to favorites</button></span>
-            </div>
+
             <div class="recipe-ingredients">
                 <div class="ing-box">
                     <h3 class="mb-0">Ingredients</h3>
                 </div>
                 <ul>
-                    <li *ngFor="let ing of recipe.ingredients" class="text-center">{{ing}}</li>
+                    <li *ngFor="let ing of recipe?.ingredients" class="text-center">{{ing}}</li>
                 </ul>
             </div>
-
         </div>
     </div>
     <div class="container">
         <div class="recipe-steps">
             <h3>Steps to Prepare</h3>
             <ol class="list-unstyled">
-                <li *ngFor="let step of recipe.instructions">{{step}}</li>
+                <li *ngFor="let step of recipe?.instructions">{{step}}</li>
             </ol>
         </div>
     </div>

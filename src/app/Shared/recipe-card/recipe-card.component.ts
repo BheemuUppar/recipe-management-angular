@@ -15,12 +15,12 @@ export class RecipeCardComponent implements OnInit {
     private router:Router) {}
 
   ngOnInit(): void {}
-  displayRecipe(recipe : Recipe){
+  displayRecipe(recipe : any){
     localStorage.setItem('currentRecipe' , JSON.stringify(recipe));
     this.userService.updateRecent(recipe).subscribe(()=>{
       // alert('added to recent! ')
     })
     // this.router.navigateByUrl('home/display');
-    this.router.navigate(['/home/display', recipe.id]);
+    this.router.navigate(['/home/display', recipe.id?recipe.id:recipe._id]);
   }
 }

@@ -36,30 +36,11 @@ export class FavoriteComponent implements OnInit {
     })
   }
 
-  // displayRecipe(recipe : Recipe){
-  //   // this.recipeService.setCurrentRecipe(recipe);
 
-  //   localStorage.setItem('currentRecipe' , JSON.stringify(recipe));
-  //   this.userService. getUsers().subscribe((data:any)=>{
-  //     for(let key in data){
-  //       if(data[key].id == this.currentUser.id){
-  //         this.recipeService.addToRecentViews(data[key] , recipe).subscribe((res)=>{
-  //           console.log("Recent : ", res);
-  //         }, (err)=>{
-  //           console.log("Recent Error : ", err);
-  //         })
-  //       }
-  //     }
-  //   });
-  //   this.router.navigateByUrl('home/display')
-  // }
 
   displayRecipe(recipe : any){
     localStorage.setItem('currentRecipe' , JSON.stringify(recipe));
-    // this.userService.updateRecent(recipe).subscribe(()=>{
-      // alert('added to recent! ')
-    // })
-    // this.router.navigateByUrl('home/display');
+
     this.router.navigate(['/home/display', recipe.id ? recipe.id : recipe._id]);
   }
 }

@@ -49,8 +49,7 @@ export class PopularComponent implements OnInit {
     this.searchMode = false;
     this.recipeService.getRandomRecipes().subscribe(
       (data: any) => {
-        // alert("in http")
-        // data.recipes[0]
+     
         data = data.data;
         for (let i = 0; i < data.recipes?.length; i++) {
           let id = data?.recipes[i].id;
@@ -102,9 +101,7 @@ export class PopularComponent implements OnInit {
   displayRecipe(recipe: Recipe) {
     localStorage.setItem('currentRecipe', JSON.stringify(recipe));
     this.userService.updateRecent(recipe).subscribe(() => {
-      // alert('added to recent! ')
     });
-    // this.router.navigateByUrl('home/display');
     this.router.navigate(['/home/display', recipe.id]);
   }
 

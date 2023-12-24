@@ -11,26 +11,30 @@ import { RecipeService } from 'src/app/services/recipe.service';
 })
 export class DisplayRecipeComponent implements OnInit {
   currentUser!: User;
+  favorites: any = [];
+  isFavorite = false;
+  isLoggedIn = false;
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute
-  ) {
+  ) {}
+
+  recipe: any = null;
+
+  ngOnInit(): void {
+    if (localStorage.getItem('isLoggedIn')) {
+      this.isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn') + '');
+    }
+
     this.activatedRoute.params.subscribe((params) => {
       const recipeId = params['id'];
       this.recipeService.getRecipeById(recipeId).subscribe((res: any) => {
         // this.organizeData(res.data);
         this.recipe = res.data;
+        this.getfavorites();
+        // console.log(this.favorites.includes(this.recipe));
       }); // Fetch data from your service or API
     });
-  }
-
-  recipe: any = null;
-
-  ngOnInit(): void {
-    //  let current = localStorage.getItem('currentRecipe');
-    //  if(current){
-    //   this.recipe = JSON.parse(current)
-    //  }
     let temp = localStorage.getItem('currentUser');
     if (temp) {
       this.currentUser = JSON.parse(temp);
@@ -42,6 +46,7 @@ export class DisplayRecipeComponent implements OnInit {
       .addToFavoriteList(this.currentUser, this.recipe)
       .subscribe(
         (res) => {
+          this.getfavorites();
           alert('Recipe Added to favorite');
         },
         (error) => {
@@ -49,25 +54,38 @@ export class DisplayRecipeComponent implements OnInit {
         }
       );
   }
-  //   organizeData(data : any){
-  //     // for(let i = 0 ; i < data.recipes.length; i++){
-  //       let id = data.id;
-  //       let title = data.title;
-  //       let ingredients = [];
-  //       for(let j=0; j < data.extendedIngredients.length; j++){
-  //           ingredients.push(data.extendedIngredients[j].original);
-  //       }
 
-  //       let isVeg = data?.vegan;
-  //       let thumbnail = data?.image;
+  removeFromFavorites() {
+    console.log('removing from favorite');
+    let email = localStorage.getItem('email');
+    if (email) {
+      this.recipeService
+        .removeFromFavorites(JSON.parse(email), this.recipe.id)
+        .subscribe((res) => {
+          // console.log(res);
+          this.getfavorites();
+        });
+    }
+  }
 
-  //       let instructions : any = [];
-  //       for(let k=0; k < data?.analyzedInstructions[0].steps.length; k++){
-
-  //         instructions.push(data?.analyzedInstructions[0].steps[k].step);
-  //       }
-  //       let time = data.readyInMinutes;
-  //       this.recipe = new Recipe(id , title, ingredients, instructions, thumbnail , isVeg , time )
-  //     // }
-  //   }
+  getfavorites() {
+    let email = localStorage.getItem('email');
+    if (email) {
+      this.recipeService
+        .getFavorite(JSON.parse(email))
+        .subscribe((res: any) => {
+          this.favorites = res.data;
+          this.isFavorite =false;
+          for (let i = 0; i < this.favorites.length; i++) {
+            console.log('inside loop');
+            
+            if (this.recipe.id == this.favorites[i].id) {
+              console.log(true);
+              this.isFavorite = true;
+              break;
+            }
+          }
+        });
+    }
+  }
 }

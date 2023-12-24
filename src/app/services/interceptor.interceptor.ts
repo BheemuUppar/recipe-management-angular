@@ -17,10 +17,6 @@ export class InterceptorInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    // this._loading.show()
-    // return next.handle(req).pipe(
-    //   finalize(() => this._loading.hide())
-    // );
     this._loading.show();
     return next.handle(req).pipe(
       tap(
