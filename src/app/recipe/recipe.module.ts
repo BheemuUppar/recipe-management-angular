@@ -25,7 +25,7 @@ import { FooterComponent } from './footer/footer.component';
     MyRecipesComponent,
     PopularComponent,
     RecentComponent,
-    SidenavComponent,
+  
     RecipeCardComponent,
     // FooterComponent,
 

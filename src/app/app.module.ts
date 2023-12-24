@@ -19,6 +19,7 @@ import { RecipeCardComponent } from './Shared/recipe-card/recipe-card.component'
 import { RecipeModule } from './recipe/recipe.module';
 import { TopnavComponent } from './recipe/topnav/topnav.component';
 import { FooterComponent } from './recipe/footer/footer.component';
+import { SidenavComponent } from './recipe/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FooterComponent } from './recipe/footer/footer.component';
     TopnavComponent,
     FooterComponent,
     // RecipeCardComponent
-    FooterComponent
+    FooterComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

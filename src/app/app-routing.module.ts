@@ -9,7 +9,9 @@ const routes: Routes = [
 
 {
   path:'',
-  component: HomeComponent
+  component: HomeComponent,
+   // canActivate:  [AuthGuard],
+   loadChildren:() => import('./recipe/recipe.module').then(m => m.RecipeModule)
 },
 {
   path:'login',

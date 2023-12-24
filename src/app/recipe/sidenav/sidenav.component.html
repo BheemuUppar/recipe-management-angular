@@ -1,20 +1,19 @@
-
-<nav class="sidebar bg-danger">
-    <ul class="list-unstyled h-100 mt-4 ">
-        <li>
-            <a routerLink="/dashboard">
-                <i class="bi bi-speedometer2"></i> Dashboard
+ <div class="my-3 ms-3">
+            <a class="navbar-brand d-flex py-0" routerLink="popular">
+                <img src="../../../assets/images/Good-food-logo-design-on-transparent-background-PNG.png" alt=""
+                    width="50" height="50" class="d-inline-block align-text-top">
+                <p class="m-0 align-self-sm-center"> Food Recipe Management</p>
             </a>
-        </li>
-        <li>
-            <a routerLink="/users">
-                <i class="bi bi-people"></i> Users
-            </a>
-        </li>
-        <li>
-            <a routerLink="/settings">
-                <i class="bi bi-gear"></i> Settings
-            </a>
-        </li>
-    </ul>
-</nav>
+        </div>
+        <ul class="list-group side-menu-list list-unstyled">
+            <li [ngClass]="{'selectedPage': headerService.getCurrentPageName() == 'Popular Recipes'}" class="nav-item">
+                <a class="nav-link" routerLink="popular">Popular Recipes</a></li>
+            <li [ngClass]="{'selectedPage': headerService.getCurrentPageName() == 'Recently Viewed'}" class="nav-item">
+                <a class="nav-link" routerLink="recent">Recently Viewed</a></li>
+            <li [ngClass]="{'selectedPage': headerService.getCurrentPageName() == 'Add Recipe'}" class="nav-item"><a
+                    class="nav-link" routerLink="add">Add Recipe</a></li>
+            <li [ngClass]="{'selectedPage': headerService.getCurrentPageName() == 'My Recipes'}" class="nav-item"><a
+                    class="nav-link" routerLink="my-recipes">My Recipes</a></li>
+            <li [ngClass]="{'selectedPage': headerService.getCurrentPageName() == 'Favorite Recipes'}" class="nav-item">
+                <a class="nav-link" routerLink="favorite">Favorite</a></li>
+        </ul>

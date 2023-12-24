@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container h-100">
     <mat-drawer #drawer class="example-sidenav" mode="side" style="max-width: 15%; min-width:300px">
-        <div class="my-3 ms-3">
+        <!-- <div class="my-3 ms-3">
             <a class="navbar-brand d-flex py-0" routerLink="popular">
                 <img src="../../../assets/images/Good-food-logo-design-on-transparent-background-PNG.png" alt=""
                     width="50" height="50" class="d-inline-block align-text-top">
@@ -18,32 +18,12 @@
                     class="nav-link" routerLink="my-recipes">My Recipes</a></li>
             <li [ngClass]="{'selectedPage': headerService.getCurrentPageName() == 'Favorite Recipes'}" class="nav-item">
                 <a class="nav-link" routerLink="favorite">Favorite</a></li>
-        </ul>
+        </ul> -->
+        <app-sidenav></app-sidenav>
     </mat-drawer>
 
     <div class="example-top-content">
-        <!--
-             <nav class="topnav navbar navbar-expand-lg navbar-dark bg-dark px-3 py-0 justify-content-between "
-            style="background-color: var(--navBg) !important;">
-            <div class="nav-left d-flex">
-                <button type="button" class="btn" (click)="drawer.toggle()">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand d-flex py-0 align-items-center " routerLink="popular">
-                    <img src="../../../assets/images/Good-food-logo-design-on-transparent-background-PNG.png" alt=""
-                        width="50" height="50" class="d-inline-block align-text-top">
-                    <h6 class="text-light mt-3 ms-3">{{headerService.getCurrentPageName()}}</h6>
-                </a>
-            </div>
-            <div class="d-flex">
-                <ul class="nav-list list-unstyled d-flex align-items-center mb-0">
-                    <li class="nav-item"><a href="#" class="nav-link"
-                            style="text-transform: capitalize;">{{currentUser}}</a></li>
-                    <li class="nav-item"><a (click)="logout()" href="#" class="nav-link">Logout </a></li>
-                </ul>
-            </div>
-
-        </nav> -->
+       
         <app-topnav (toggleNav)="drawer.toggle()"></app-topnav>
 
         <div class="content">
