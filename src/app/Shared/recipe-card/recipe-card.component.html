@@ -1,0 +1,15 @@
+<div class="card recipe-card">
+    <img src="{{recipe.thumbnail}}" class="card-img-top" alt="Recipe Thumbnail">
+    <div class="card-body ">
+        <h6 class="card-title text-truncate">{{recipe.title}}</h6>
+        <p class="card-text d-flex justify-content-between">
+            <span class="badge bg-success" *ngIf="recipe.isVeg == true">Veg</span>
+            <span class="badge bg-danger" *ngIf="recipe.isVeg != true">Non-Veg</span>
+            <span class="badge rounded-pill bg-dark">{{recipe.time}} min</span>
+            <!-- Change "bg-success" to "bg-danger" for non-veg -->
+        </p>
+    </div>
+    <div class="card-footer p-0">
+        <button class="btn btn-warning w-100 " (click)="displayRecipe(recipe)">Read More</button>
+    </div>
+</div>

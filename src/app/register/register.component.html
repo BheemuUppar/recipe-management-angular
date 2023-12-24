@@ -1,0 +1,59 @@
+<div class="container">
+
+    <form [formGroup]="registerForm" style="max-width: 500px;margin: auto;" (ngSubmit)="register()">
+        <h2>Register Form</h2>
+        <!-- username -->
+        <div class="input-container">
+            <img class='icon' src="../../assets/icons/user.svg" alt="">
+            <input type="text" formControlName="userName" class="input-field" type="text" placeholder="UserName" name="username">
+        </div>
+        <div *ngIf="registerForm.controls['userName']?.touched && registerForm.controls['userName']?.invalid">
+            <span class="error" *ngIf="registerForm.get('userName')?.hasError('required')">Name can't be Empty</span>
+        </div>
+
+        <!-- email -->
+        <div class="input-container">
+            <img class='icon' src="../../assets/icons/email.svg" alt="">
+            <input formControlName="email" class="input-field" type="email" placeholder="Email" name="email">
+        </div>
+        <div *ngIf="registerForm.controls['email']?.touched && registerForm.controls['email']?.invalid">
+            <span class="error" *ngIf="registerForm.get('email')?.hasError('required')">Enter E-mail</span>
+            <span class="error" *ngIf="registerForm.get('email')?.hasError('email')">Enter Valid E-mail</span>
+        </div>
+
+        <!-- password -->
+        <div class="input-container">
+            <img class='icon' src="../../assets/icons/key.svg" alt="">
+            <input type="password" formControlName="password" class="input-field" placeholder="password" name="password">
+        </div>
+        <div *ngIf="registerForm.controls['password']?.touched && registerForm.controls['password']?.invalid">
+            <span class="error" *ngIf="registerForm.get('password')?.hasError('password')">Enter E-mail</span>
+            <span class="error" *ngIf="registerForm.get('password')?.hasError('pattern')">
+                <pre>
+                    password should contain 1 uppercase characters
+                    password should contain 1 lowercase characters
+                    password should contain 1 special characters
+                    password should contain 1 digit
+                    password should contain minimu 8 characters
+                </pre>
+            </span>
+        </div>
+        <!-- confirm password -->
+        <div class="input-container">
+            <img class='icon' src="../../assets/icons/key.svg" alt="">
+            <input formControlName="cnfPassword" class="input-field" type="password" placeholder="confirm password" name="cnfPassword">
+        </div>
+        <div *ngIf="registerForm.controls['cnfPassword']?.touched && registerForm.controls['cnfPassword']?.invalid">
+            <span class="error" *ngIf="registerForm.get('cnfPassword')?.hasError('required')">Enter confirm password </span>
+            <!-- <span class="error" *ngIf="registerForm.get('cnfPassword')?.hasError('email')">Enter Valid E-mail</span> -->
+        </div>
+
+        <button [ngStyle]="{'cursor':registerForm.invalid ? 'not-allowed': 'pointer'}" [disabled]="registerForm.invalid" type="submit" class="btn">
+            Register
+        </button>
+        <p>already Registered? <a routerLink="/login">login</a> </p>
+        <a routerLink="/home">skip now</a>
+    </form>
+
+
+</div>

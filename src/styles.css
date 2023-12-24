@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+background-color: var(--bgColor);
+}
+:root{
+    /* --bgColor:#427D9D; */
+    /* --navBg:#164863; */
+    /* --bgColor:#164863;
+    --navBg:#427D9D; */
+    --bgColor:#DEE0D5; 
+    --navBg:#1F2024;
+    
+    --activeColor:#9BBEC8;
+    --textColor:#DDF2FD;
+}
