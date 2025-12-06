@@ -152,7 +152,7 @@ export class PopularComponent implements OnInit {
         let isVeg = recipe.vegetarian;
         let time = recipe.readyInMinutes;
         let thumbnail = recipe.image;
-        let instructions = recipe?.analyzedInstructions[0].steps || [];
+        let instructions =  [];
         let ingredients: any = [];
         recipe.extendedIngredients.forEach((ingre: any) => {
           ingredients.push(ingre.name);
